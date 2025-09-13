@@ -1,4 +1,3 @@
-
 data:
     sampling_rate: 32000
     segment_seconds: 2
