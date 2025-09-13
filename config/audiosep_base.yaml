@@ -1,7 +1,7 @@
 
 data:
     sampling_rate: 32000
-    segment_seconds: 5
+    segment_seconds: 2
     loudness_norm:
         lower_db: -10
         higher_db: 10
