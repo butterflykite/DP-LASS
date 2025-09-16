@@ -17,4 +17,4 @@ The pretrained AudioSep and CLAP models, along with the evaluation datasets (Aud
 
 ## Training 
 The AudioSet dataset can be accessed via the following link:
-https://pan.baidu.com/s/13WnzI1XDSvqXZQTS-Kqujg](https://research.google.com/audioset/
+https://research.google.com/audioset/
