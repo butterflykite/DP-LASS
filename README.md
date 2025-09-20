@@ -42,7 +42,7 @@ Python: 3.10.16 | PyTorch: 1.13.1 | CUDA: True
 
 ## Pretrained model
 
- The pretrained Reconv-Adapter models are  available at this URL:https://drive.google.com/drive/folders/1AdSQNIwIoV78RcHGQTTF7RlUQte21aZO?usp=sharing
+The pretrained Reconv-Adapter models are  available at this URL:https://drive.google.com/drive/folders/1AdSQNIwIoV78RcHGQTTF7RlUQte21aZO?usp=sharing
 
 The pretrained AudioSep and CLAP models are available at https://huggingface.co/spaces/Audio-AGI/AudioSep/tree/main/checkpoint
 
