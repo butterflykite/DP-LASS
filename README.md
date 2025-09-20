@@ -5,9 +5,9 @@
 Official implementation of Domain Partitioning Meets Parameter-Efficient Fine-Tuning: A Novel Method for Improved Language-Queried Audio Source Separation
 
 
-# 🚀 Environment Setup Guide
+## 🚀 Environment Setup Guide
 
-## ✅ Step 1: Create the Conda Environment
+### ✅ Step 1: Create the Conda Environment
 
 Place the `environment.yml` file in your project root directory and run:
 
@@ -18,7 +18,7 @@ conda env create -f environment.yml
 
 ---
 
-## ✅ Step 2: Activate the Environment
+### ✅ Step 2: Activate the Environment
 
 ```bash
 conda activate DP-LASS
@@ -26,19 +26,18 @@ conda activate DP-LASS
 
 ---
 
-## ✅ Step 3: Verify Installation
+### ✅ Step 3: Verify Installation
 
 Check that PyTorch and CUDA are correctly installed:
 
 ```bash
-python -c "import torch; print('PyTorch Version:', torch.__version__); print('CUDA Available:', torch.cuda.is_available())"
+python -c "import sys, torch; print(f'Python: {sys.version.split()[0]} | PyTorch: {torch.__version__} | CUDA: {torch.cuda.is_available()}')"
 ```
 
 You should see output similar to:
 
 ```
-PyTorch Version: 1.13.1
-CUDA Available: True
+Python: 3.10.16 | PyTorch: 1.13.1 | CUDA: True
 ```
 
 ## Pretrained model
