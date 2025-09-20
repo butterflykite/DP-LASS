@@ -129,19 +129,114 @@ After launching the script, you can monitor its progress and find the results in
     tensorboard --logdir /path/to/your/workspace/tf_logs
     ```
 
+Of course. Here is the "Evaluation & Inference" section for your README, written in English based on your provided scripts and information.
 
+---
 
-## Pretrained model
+## 📊 Evaluation & Inference
 
-The pretrained Reconv-Adapter models are  available at this URL:https://drive.google.com/drive/folders/1AdSQNIwIoV78RcHGQTTF7RlUQte21aZO?usp=sharing
+This section will guide you through the process of reproducing the experimental results from our paper on standard benchmark datasets using the provided scripts and models.
 
-The pretrained AudioSep and CLAP models are available at https://huggingface.co/spaces/Audio-AGI/AudioSep/tree/main/checkpoint
+### ✅ Step 1: Prepare Data and Pre-trained Models
 
-##  Evaluation
-Download the evaluation data at (https://drive.google.com/drive/folders/1PbCsuvdrzwAZZ_fwIzF0PeVGZkTk0-kL?usp=sharing) 
+Before running the evaluation, you need to download all the necessary datasets and model weights.
 
-The pretrained AudioSep and CLAP models, along with the evaluation datasets (AudioSet, AudioCaps, Clotho, ESC50, VGGSound, and Music), are all provided by the official AudioSep project repository: https://github.com/Audio-AGI/AudioSep 
+#### 1.1 Evaluation Datasets
 
-## Training 
-The AudioSet dataset can be accessed via the following link:
-https://research.google.com/audioset/
+We provide all the datasets used for evaluation, including AudioSet, AudioCaps, Clotho, ESC50, VGGSound, and Music.
+
+*   **Download Link**: [Google Drive](https://drive.google.com/drive/folders/1PbCsuvdrzwAZZ_fwIzF0PeVGZkTk0-kL?usp=sharing)
+*   **Data Source**: All evaluation datasets are provided by the official AudioSep project. For more information, please refer to their repository: [https://github.com/Audio-AGI/AudioSep](https://github.com/Audio-AGI/AudioSep).
+*   **Action**: After downloading and extracting the files, we recommend placing them in a unified directory, such as `data/`.
+
+#### 1.2 Pre-trained Models
+
+The evaluation process requires two types of pre-trained models:
+
+1.  **Base Models**: The original AudioSep and CLAP models.
+    *   **Download Link**: [Hugging Face](https://huggingface.co/spaces/Audio-AGI/AudioSep/tree/main/checkpoint)
+
+2.  **Fine-tuned DP-LASS (Reconv-Adapter) Models**: These are the fine-tuned models proposed in our paper.
+    *   **Download Link**: [Google Drive](https://drive.google.com/drive/folders/1AdSQNIwIoV78RcHGQTTF7RlUQte21aZO?usp=sharing)
+
+### ✅ Step 2: Recommended Directory Structure
+
+To ensure the scripts run smoothly, we suggest organizing your downloaded files using the following structure:
+
+```
+your_project_root/
+├── data/
+│   ├── AudioCaps_evaluation/
+│   ├── AudioSet_evaluation/
+│   ├── Clotho_evaluation/
+│   └── ... (and other datasets)
+│
+├── pretrained_models/
+│   ├── audiosep_base_4M_steps.ckpt  # Base model
+│   └── DP-LASS/                     # Contains all 7 fine-tuned models
+│       ├── cluster0_model.pt
+│       ├── cluster1_model.pt
+│       └── ... 
+│
+└── evaluation/
+    ├── metadata/
+    ├── evaluator_audiocaps_sdri.py
+    ├── evaluator_audioset_sdri.py
+    └── ... (and other evaluation scripts)
+```
+
+### ✅ Step 3: Run the Evaluation Scripts
+
+Within the `evaluation/` directory, we provide a separate evaluation script for each dataset. These scripts are designed to automatically load all 7 fine-tuned DP-LASS models. For each audio sample, the script intelligently selects the best-performing model for separation and then calculates the average performance metrics across the entire dataset.
+
+#### 3.1 General Command Format
+
+```bash
+python evaluation/<script_name>.py \
+    --metadata_csv evaluation/metadata/<metadata_file>.csv \
+    --audio_dir /path/to/your/data/<dataset_folder> \
+    --base_checkpoint /path/to/your/pretrained_models/audiosep_base_4M_steps.ckpt \
+    --dora_checkpoints \
+        /path/to/your/DP-LASS/cluster0_model.pt \
+        /path/to/your/DP-LASS/cluster1_model.pt \
+        /path/to/your/DP-LASS/cluster2_model.pt \
+        /path/to/your/DP-LASS/cluster3_model.pt \
+        /path/to/your/DP-LASS/cluster4_model.pt \
+        /path/to/your/DP-LASS/cluster5_model.pt \
+        /path/to/your/DP-LASS/cluster6_model.pt \
+    --config_yaml config/audiosep_base.yaml
+```
+
+#### 3.2 Command Parameter Explanation
+
+*   `--metadata_csv`: Path to the metadata file required for evaluation (located in `evaluation/metadata/`).
+*   `--audio_dir`: Path to the directory where you stored the audio files for the evaluation dataset.
+*   `--base_checkpoint`: Path to the original AudioSep **base model** checkpoint file.
+*   `--dora_checkpoints`: **A list of paths** to **all seven** fine-tuned DP-LASS (Reconv-Adapter) models.
+*   `--config_yaml`: Path to the project's YAML configuration file.
+
+#### 3.3 Example: Evaluating on the AudioCaps Dataset
+
+Assuming you have organized your files according to the recommended directory structure, the command to run the evaluation on the AudioCaps dataset would be:
+
+```bash
+python evaluation/evaluator_audiocaps_sdri.py \
+    --metadata_csv evaluation/metadata/audiocaps_eval.csv \
+    --audio_dir data/AudioCaps_evaluation \
+    --base_checkpoint pretrained_models/audiosep_base_4M_steps.ckpt \
+    --dora_checkpoints \
+        pretrained_models/DP-LASS/cluster0_model.pt \
+        pretrained_models/DP-LASS/cluster1_model.pt \
+        pretrained_models/DP-LASS/cluster2_model.pt \
+        pretrained_models/DP-LASS/cluster3_model.pt \
+        pretrained_models/DP-LASS/cluster4_model.pt \
+        pretrained_models/DP-LASS/cluster5_model.pt \
+        pretrained_models/DP-LASS/cluster6_model.pt \
+    --config_yaml config/audiosep_base.yaml
+```
+
+To evaluate other datasets, simply change the script name, the `--metadata_csv` file, and the `--audio_dir` path accordingly.
+
+### ✅ Step 4: Review the Results
+
+When the script runs, it will display the processing progress for each sample in the terminal. Once the evaluation is complete, it will print the final average **SDRi** and **SISDR** scores, which you can then compare with the results reported in our paper.
