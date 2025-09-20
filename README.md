@@ -4,6 +4,43 @@
 
 Official implementation of Domain Partitioning Meets Parameter-Efficient Fine-Tuning: A Novel Method for Improved Language-Queried Audio Source Separation
 
+
+# 🚀 Environment Setup Guide
+
+## ✅ Step 1: Create the Conda Environment
+
+Place the `environment.yml` file in your project root directory and run:
+
+```bash
+conda env create -f environment.yml
+```
+
+
+---
+
+## ✅ Step 2: Activate the Environment
+
+```bash
+conda activate DP-LASS
+```
+
+---
+
+## ✅ Step 3: Verify Installation
+
+Check that PyTorch and CUDA are correctly installed:
+
+```bash
+python -c "import torch; print('PyTorch Version:', torch.__version__); print('CUDA Available:', torch.cuda.is_available())"
+```
+
+You should see output similar to:
+
+```
+PyTorch Version: 1.13.1
+CUDA Available: True
+```
+
 ## Pretrained model
 
  The pretrained Reconv-Adapter models are  available at this URL:https://drive.google.com/drive/folders/1AdSQNIwIoV78RcHGQTTF7RlUQte21aZO?usp=sharing
