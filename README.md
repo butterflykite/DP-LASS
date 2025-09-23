@@ -79,9 +79,9 @@ Your training data should be defined in a single JSON file. This file must conta
 To train on AudioSet:
 
 1.  Visit the official download page: [https://research.google.com/audioset/download.html ](https://research.google.com/audioset/download.html )
-2.  Download the segment CSV files (`balanced_train_segments.csv`, etc.) and `ontology.json`.
+2.  Download the segment CSV files (`balanced_train_segments.csv`, etc.) and ` class_labels_indices.csv`.
 3.  Use a tool like `yt-dlp` to download audio clips from YouTube using the provided video IDs and timestamps.
-4.  Convert label IDs (e.g., `/m/07rwj`) to human-readable captions using the ontology, then format your data into the required JSON structure (Step 1).
+4.  Convert label IDs (e.g., `/m/07rwj`) to human-readable captions using the ` class_labels_indices.csv`, then format your data into the required JSON structure (Step 1).
 
 > ⚠️ Note: AudioSet does not provide direct audio downloads — you must retrieve clips from YouTube, and availability is not guaranteed.
 
