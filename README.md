@@ -46,7 +46,7 @@ Of course. Here is the "Model Training" section for your README, written in Engl
 
 ## 💻 Model Training
 
-This section provides a comprehensive guide to training the DP-LASS model on your own datasets.
+This section provides a comprehensive guide to training the DP-LASS model on AudioSet or your own datasets.
 
 ### ✅ Step 1: Prepare Data(JSON Format)
 
@@ -71,6 +71,22 @@ Your training data should be defined in a single JSON file. This file must conta
   ]
 }
 ```
+
+---
+
+### ✅ Step 1.5: Downloading AudioSet 
+
+To train on AudioSet:
+
+1.  Visit the official download page: [https://research.google.com/audioset/download.html ](https://research.google.com/audioset/download.html )
+2.  Download the segment CSV files (`balanced_train_segments.csv`, etc.) and `ontology.json`.
+3.  Use a tool like `yt-dlp` to download audio clips from YouTube using the provided video IDs and timestamps.
+4.  Convert label IDs (e.g., `/m/07rwj`) to human-readable captions using the ontology, then format your data into the required JSON structure (Step 1).
+
+> ⚠️ Note: AudioSet does not provide direct audio downloads — you must retrieve clips from YouTube, and availability is not guaranteed.
+
+---
+
 
 ### ✅ Step 2: Prepare the Configuration File
 
@@ -129,13 +145,8 @@ After launching the script, you can monitor its progress and find the results in
     tensorboard --logdir /path/to/your/workspace/tf_logs
     ```
 
-Of course. Here is the "Evaluation & Inference" section for your README, written in English based on your provided scripts and information.
 
----
-
-## 📊 Evaluation & Inference
-
-This section will guide you through the process of reproducing the experimental results from our paper on standard benchmark datasets using the provided scripts and models.
+## 📊 Evaluation
 
 ### ✅ Step 1: Prepare Data and Pre-trained Models
 
@@ -237,6 +248,3 @@ python evaluation/evaluator_audiocaps_sdri.py \
 
 To evaluate other datasets, simply change the script name, the `--metadata_csv` file, and the `--audio_dir` path accordingly.
 
-### ✅ Step 4: Review the Results
-
-When the script runs, it will display the processing progress for each sample in the terminal. Once the evaluation is complete, it will print the final average **SDRi** and **SISDR** scores, which you can then compare with the results reported in our paper.
