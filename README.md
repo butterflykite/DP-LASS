@@ -40,8 +40,6 @@ You should see output similar to:
 Python: 3.10.16 | PyTorch: 1.13.1 | CUDA: True
 ```
 
-Of course. Here is the "Model Training" section for your README, written in English and incorporating the information you provided.
-
 ---
 
 ## 💻 Model Training
