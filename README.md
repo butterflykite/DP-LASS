@@ -1,14 +1,13 @@
-```
 # DP-LASS
 
-Official implementation of Domain Partitioning Meets Parameter-Efficient Fine-Tuning: A Novel Method for Improved Language-Queried Audio Source Separation and its extended version Language-Queried Audio Source Separation Based on Data Domain Partitioning and Subdomain Fine-Tuning.
+Official implementation of **Domain Partitioning Meets Parameter-Efficient Fine-Tuning: A Novel Method for Improved Language-Queried Audio Source Separation** and its extended version **Language-Queried Audio Source Separation Based on Data Domain Partitioning and Subdomain Fine-Tuning**.
 
 Repository: [https://github.com/butterflykite/DP-LASS](https://github.com/butterflykite/DP-LASS)
 
 This repository contains two generations of our subdomain fine-tuning framework for Language-Queried Audio Source Separation (LASS):
 
-- AudioSep-SFT v1 / DP-LASS v1: domain partitioning + subdomain fine-tuning with a fixed number of 7 subdomains.
-- AudioSep-SFT v2 / DP-LASS v2: extended version with gradient-conflict-based optimal subdomain count, SED-based data refinement, improved subdomain classifier, lightweight fine-tuning modules, hybrid loss, and generalization to other LASS backbones.
+- **AudioSep-SFT v1 / DP-LASS v1**: domain partitioning + subdomain fine-tuning with a fixed number of 7 subdomains.
+- **AudioSep-SFT v2 / DP-LASS v2**: extended version with gradient-conflict-based optimal subdomain count, SED-based data refinement, improved subdomain classifier, lightweight fine-tuning modules, hybrid loss, and generalization to other LASS backbones.
 
 ---
 
