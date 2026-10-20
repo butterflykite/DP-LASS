@@ -1,0 +1,11 @@
+{
+    "dataset_type": "audio_dir",
+    "datasets": [
+        {
+            "id": "vae_audio",
+            "path": "/data/audioset",
+            "custom_metadata_module": "configs/dataset_configs/custom_metadata/custom_md_example.py"
+        }
+    ],
+    "random_crop": true
+}
