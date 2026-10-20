@@ -539,17 +539,15 @@ DP-LASS/
 If you find this repository useful, please cite the corresponding papers.
 
 ```bibtex
-@article{wang2026dp_lass,
+@inproceedings{zhang2026domain,
   title={Domain Partitioning Meets Parameter-Efficient Fine-Tuning: A Novel Method for Improved Language-Queried Audio Source Separation},
-  author={Wang, Kai and Zhang, Yinkai and Zhang, Dingbang and Wang, Tao and Huang, Hao},
-  year={2026}
+  author={Zhang, Yinkai and Zhang, Dingbang and Wang, Tao and Rakhimova, Diana and Wang, Kai and Huang, Hao},
+  booktitle={ICASSP 2026-2026 IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP)},
+  pages={15637--15641},
+  year={2026},
+  organization={IEEE}
 }
 
-@article{wang2026lass_subdomain,
-  title={Language-Queried Audio Source Separation Based on Data Domain Partitioning and Subdomain Fine-Tuning},
-  author={Wang, Kai and Zhang, Yinkai and Zhang, Dingbang and Wang, Tao and Huang, Hao},
-  year={2026}
-}
 ```
 
 ---
